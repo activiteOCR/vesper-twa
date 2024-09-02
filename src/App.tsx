@@ -4,8 +4,6 @@ import { useTonConnect } from "./hooks/useTonConnect";
 import { useCounterContract } from "./hooks/useCounterContract";
 import WebApp from "@twa-dev/sdk";
 
-WebApp.showAlert("Hello from TWA!");
-
 function App() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
