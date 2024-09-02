@@ -2,11 +2,17 @@ import "./App.css";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnect } from "./hooks/useTonConnect";
 import { useCounterContract } from "./hooks/useCounterContract";
-import "@twa-dev/sdk";
+import WebApp from "@twa-dev/sdk";
+
+WebApp.showAlert("Hello from TWA!");
 
 function App() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
+
+  const showAlert = () => {
+    WebApp.showAlert("Hey there!");
+  };
 
   return (
     <div className="App">
@@ -14,6 +20,7 @@ function App() {
         <TonConnectButton />
 
         <div className="Card">
+          <b>{WebApp.platform}</b>
           <b>Counter Address</b>
           <div className="Hint">{address?.slice(0, 30) + "..."}</div>
         </div>
@@ -22,6 +29,14 @@ function App() {
           <b>Counter Value</b>
           <div>{value ?? "Loading..."}</div>
         </div>
+
+        <a
+          onClick={() => {
+            showAlert();
+          }}
+        >
+          Show Alert
+        </a>
 
         <a
           className={`Button ${connected ? "Active" : "Disabled"}`}
