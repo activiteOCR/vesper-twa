@@ -36,6 +36,8 @@ function App() {
           Show Alert
         </a>
 
+        <br />
+
         <a
           className={`Button ${connected ? "Active" : "Disabled"}`}
           onClick={() => {
